@@ -1,11 +1,11 @@
 import React from 'react';
-
+import {LOGO_URL} from "../utils/constants"
 const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
         <img
-          src="https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg"
+          src= {LOGO_URL}
           alt="Logo"
         />
       </div>

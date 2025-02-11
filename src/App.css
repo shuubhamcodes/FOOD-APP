@@ -166,3 +166,51 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   border-color: #1a8c78;
 }
+
+
+
+
+
+
+
+
+/* ==============================
+   🎯 Filter Button Styling
+   ============================== */
+   .filter {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .filter-btn {
+    background-color: #1a8c78;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .filter-btn:hover {
+    background-color: #15705e;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .filter-btn:active {
+    background-color: #105a4a;
+    transform: scale(0.98);
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 600px) {
+    .filter-btn {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
