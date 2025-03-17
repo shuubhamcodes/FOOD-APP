@@ -47,7 +47,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
-
+import RestaurantMenu from './components/RestaurantMenu';
 // 1️⃣ Define Routes
 const appRouter = createBrowserRouter([
   {
@@ -57,7 +57,9 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "", element: <Body /> }, // Default home page
       { path: "about", element: <About /> }, // About page
-      { path: "contact", element: <Contact /> }, // About page
+      { path: "contact", element: <Contact /> }, 
+      { path: "restaurants/:resId", element: <RestaurantMenu /> },
+
     ],
   },
 ]);

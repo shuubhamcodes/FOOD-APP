@@ -1984,7 +1984,153 @@
 
 
 
+// import { useState, useEffect } from "react";
+// import RestaurantCard from "./RestaurantCard";
+// import Shimmer from "./Shimmer";
+
+// const Body = () => {
+//   const [listOfRestaurants, setListOfRestaurants] = useState([]); // All restaurants
+//   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // Restaurants after filtering
+//   const [loading, setLoading] = useState(true);
+//   const [searchText, setSearchText] = useState(""); // Search input state
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   const fetchData = async () => {
+//     try {
+//       console.log("Fetching data...");
+
+//       const response = await fetch(
+//         "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
+//       );
+
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! Status: ${response.status}`);
+//       }
+
+//       const json = await response.json();
+//       console.log("Full JSON Response:", json);
+
+//       let restaurantData = [];
+
+//       json?.data?.cards?.forEach((card, index) => {
+//         console.log(`Card ${index}:`, card);
+
+//         if (card?.card?.card?.gridElements?.infoWithStyle?.restaurants) {
+//           restaurantData =
+//             card.card.card.gridElements.infoWithStyle.restaurants || [];
+//         }
+//       });
+
+//       if (!restaurantData.length) {
+//         console.warn("⚠️ No restaurants found. Check JSON structure.");
+//       }
+
+//       setListOfRestaurants(restaurantData);
+//       setFilteredRestaurants(restaurantData);
+//       setLoading(false);
+//     } catch (error) {
+//       console.error("Error fetching data:", error);
+//       setLoading(false);
+//     }
+//   };
+
+//   // 🔍 Search Function
+//   const handleSearch = () => {
+//     const filteredList = listOfRestaurants.filter((restaurant) =>
+//       restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase()) // Case-insensitive search
+//     );
+//     setFilteredRestaurants(filteredList);
+//   };
+
+//   return (
+//     <div className="body">
+//       {/* 🔍 Search Section */}
+//       <div className="search">
+//         <input
+//           type="text"
+//           className="search-box"
+//           placeholder="Search for restaurants..."
+//           value={searchText}
+//           onChange={(e) => setSearchText(e.target.value)}
+//         />
+//         <button onClick={handleSearch} className="search-btn">
+//           Search
+//         </button>
+//       </div>
+
+//       {/* 🔝 Filter for Top Rated Restaurants */}
+//       <div className="filter">
+//         <button
+//           className="filter-btn"
+//           onClick={() => {
+//             const topRated = listOfRestaurants.filter(
+//               (res) => res?.info?.avgRating > 4
+//             );
+//             setFilteredRestaurants(topRated);
+//           }}
+//         >
+//           Top Rated Restaurants
+//         </button>
+//       </div>
+
+//       <h2>Restaurant Listings</h2>
+
+//       {/* 📌 Show loading effect before API fetch completes */}
+//       <div className="res-container">
+//         {loading ? (
+//           <Shimmer />
+//         ) : filteredRestaurants.length > 0 ? (
+//           filteredRestaurants.map((restaurant) =>
+//             restaurant?.info ? (
+//               <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+//             ) : null
+//           )
+//         ) : (
+//           <h3>No Restaurants Available</h3>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Body;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
@@ -2085,7 +2231,10 @@ const Body = () => {
         ) : filteredRestaurants.length > 0 ? (
           filteredRestaurants.map((restaurant) =>
             restaurant?.info ? (
-              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+              <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}> 
+                {/* ✅ Clickable restaurant card */}
+                <RestaurantCard resData={restaurant} />
+              </Link>
             ) : null
           )
         ) : (
@@ -2097,6 +2246,7 @@ const Body = () => {
 };
 
 export default Body;
+
 
 
 
